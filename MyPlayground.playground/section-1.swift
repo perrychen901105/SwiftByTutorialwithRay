@@ -43,10 +43,64 @@ Tuple test
 /**
     Control Flow
 */
+/*
+for loop
 
-let greeting = "Swift by Tutorials Rocks!"
-var range = Range(start: 1, end: 6) //1...5
-for i in range {
-    println("\(i) - \(greeting)")
-    
+*/
+//let greeting = "Swift by Tutorials Rocks!"
+//var range = Range(start: 1, end: 6) //1...5
+//for i in range {
+//    println("\(i) - \(greeting)")
+//}
+//
+//for i in "Swift" {
+//    println(i)
+//}
+
+/*
+    while loop
+*/
+//let greeting = "Swift by Tutorials Rocks!"
+//
+//var i = 0
+//while i < 5 {
+//    println("\(i) - \(greeting)")
+//    i++
+//}
+
+/*
+    if statement
+*/
+//let greeting = "Swift by Tutorials Rocks!"
+//for i in 1...5 {
+//    if i == 5 {
+//        println(greeting.uppercaseString)
+//    } else {
+//        println(greeting)
+//    }
+//}
+
+
+/*
+    switch statement
+*/
+var direction = "up"
+switch direction {
+    case "down":
+        println("Going Down!")
+    case "up":
+        println("Going up!")
+    default:
+        println("Going Nowhere")
 }
+
+var score : Int = 11
+switch score {
+    case 1..<10 :
+        println("novice")
+    case 10..<100 :
+        println("porficent")
+    default:
+        println("awesome")
+}
+
