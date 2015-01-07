@@ -27,4 +27,8 @@ class ViewController: UIViewController {
   
   @IBOutlet var mapView : MKMapView!
   
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
 }

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>06A9BDFB-C33E-471C-B300-7B8BB9DED8E8</string>
+	<key>IDESourceControlProjectName</key>
+	<string>TreasureHunt</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>67666A407BE6889014DCAA6C02D06B2C9A9572AD</key>
+		<string>https://github.com/perrychen901105/SwiftByTutorialwithRay.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>TreasureHunt-Starter/TreasureHunt.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>67666A407BE6889014DCAA6C02D06B2C9A9572AD</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/perrychen901105/SwiftByTutorialwithRay.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>67666A407BE6889014DCAA6C02D06B2C9A9572AD</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>67666A407BE6889014DCAA6C02D06B2C9A9572AD</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SwiftByTutorialwithRay</string>
+		</dict>
+	</array>
+</dict>
+</plist>
