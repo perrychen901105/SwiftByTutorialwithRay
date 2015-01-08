@@ -89,6 +89,7 @@ extension ViewController: MKMapViewDelegate {
                 alert.addAction(UIAlertAction(title: "Find Nearest", style: UIAlertActionStyle.Default) { action in
                     
                         // 1
+                        // sort the list of treasures,
                     var sortedTreasures = self.treasures
                     sortedTreasures.sort {
                         // 2
