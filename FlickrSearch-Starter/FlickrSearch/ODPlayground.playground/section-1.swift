@@ -121,15 +121,25 @@ struct OrderedDictionary <KeyType: Hashable, ValueType>{
 }
 
 //In this example, the dictionary has an Int key, so the compiler will look at the type of the variable being assigned to determine which subscript to use. Since byIndex is an (Int, String) tuple, the compiler knows to use the array style index version of the subscript which matches the expected return type.
-var dict = OrderedDictionary<Int, String>()
-dict.insert("Dog", forKey: 1, atIndex: 0)
-dict.insert("Cat", forKey: 2, atIndex: 1)
-println(dict.array.description + " : " + dict.dictionary.description)
-var byIndex: (Int, String) = dict[0]
-println(byIndex)
+//var dict = OrderedDictionary<Int, String>()
+//dict.insert("Dog", forKey: 1, atIndex: 0)
+//dict.insert("Cat", forKey: 2, atIndex: 1)
+//println(dict.array.description + " : " + dict.dictionary.description)
+//var byIndex: (Int, String) = dict[0]
+//println(byIndex)
+//
+//var byKey: String? = dict[2]
+//println(byKey)
 
-var byKey: String? = dict[2]
-println(byKey)
+var dicta = OrderedDictionary<String, String>()
+dicta.insert("Cat", forKey: "a", atIndex: 0)
+dicta.insert("Dog", forKey: "b", atIndex: 1)
+dicta.insert("Kanmel", forKey: "c", atIndex: 2)
 
+dicta["a"] = "aaaa"
+var byValue: (String, String) = dicta[0]
+var byTest: String = dicta["a"]!
 
-
+println(dicta.array.description + dicta.dictionary.description)
+println(byValue)
+println(byTest)
