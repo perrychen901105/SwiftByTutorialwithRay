@@ -28,3 +28,12 @@ extension GeoLocation {
         return MKMapPointForCoordinate(self.coordinate)
     }
 }
+
+extension GeoLocation: Equatable {
+}
+/**
+    Declare all operator overloads at global scope because they aren't methods that belong to a class. can use the == operator on its own anywhere.
+*/
+func ==(lhs: GeoLocation, rhs: GeoLocation) -> Bool {
+    return lhs.latitude == rhs.latitude && rhs.longitude == rhs.longitude
+}
