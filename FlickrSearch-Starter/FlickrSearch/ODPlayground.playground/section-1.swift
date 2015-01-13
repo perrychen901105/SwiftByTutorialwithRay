@@ -120,6 +120,35 @@ struct OrderedDictionary <KeyType: Hashable, ValueType>{
     
 }
 
+extension OrderedDictionary: SequenceType {
+    // 1
+    /**
+    The GeneratorType type alias that the SequenceType protocol defined must be a type that conforms to
+Generator. You could write your own generator, but the Swift standard library includes a helpful struct called GeneratorOf that takes a closure to execute each time next() is called. The struct is generic on the type of object that is returned. Therefore, in the case of OrderedDictionary, you set the generic type parameter to a tuple of KeyType and ValueType.
+        */
+    typealias GeneratorType = GeneratorOf<(KeyType, ValueType)>
+    
+    // 2
+    
+    func generate() -> GeneratorOf<(KeyType, ValueType)> {
+        // 3
+        // GeneratorOf will execute a given closure each time you call next(). To archieve the desired iteration, you can store the current index in the index variable, which starts at zero
+        var index = 0
+        
+        // 4
+        return GeneratorOf {
+            // 5
+            if index < self.array.count {
+                let key = self.array[index++]
+                return (key, self.dictionary[key]!)
+            } else {
+                return nil
+            }
+        }
+    }
+}
+
+
 //In this example, the dictionary has an Int key, so the compiler will look at the type of the variable being assigned to determine which subscript to use. Since byIndex is an (Int, String) tuple, the compiler knows to use the array style index version of the subscript which matches the expected return type.
 //var dict = OrderedDictionary<Int, String>()
 //dict.insert("Dog", forKey: 1, atIndex: 0)
@@ -136,10 +165,14 @@ dicta.insert("Cat", forKey: "a", atIndex: 0)
 dicta.insert("Dog", forKey: "b", atIndex: 1)
 dicta.insert("Kanmel", forKey: "c", atIndex: 2)
 
+for (key, value) in dicta {
+    println("\(key) => \(value)")
+}
+
 dicta["a"] = "aaaa"
 var byValue: (String, String) = dicta[0]
 var byTest: String = dicta["a"]!
 
-println(dicta.array.description + dicta.dictionary.description)
-println(byValue)
-println(byTest)
+//println(dicta.array.description + dicta.dictionary.description)
+//println(byValue)
+//println(byTest)
