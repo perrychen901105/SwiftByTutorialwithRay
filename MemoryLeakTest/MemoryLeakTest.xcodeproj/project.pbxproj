@@ -13,6 +13,7 @@
 		C236EC0B1A67B394008FD0B4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C236EC0A1A67B394008FD0B4 /* Images.xcassets */; };
 		C236EC0E1A67B394008FD0B4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C236EC0C1A67B394008FD0B4 /* LaunchScreen.xib */; };
 		C236EC1A1A67B394008FD0B4 /* MemoryLeakTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C236EC191A67B394008FD0B4 /* MemoryLeakTestTests.swift */; };
+		C236EC241A67B3FA008FD0B4 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = C236EC231A67B3FA008FD0B4 /* Person.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		C236EC131A67B394008FD0B4 /* MemoryLeakTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MemoryLeakTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C236EC181A67B394008FD0B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C236EC191A67B394008FD0B4 /* MemoryLeakTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryLeakTestTests.swift; sourceTree = "<group>"; };
+		C236EC231A67B3FA008FD0B4 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 			children = (
 				C236EC031A67B394008FD0B4 /* AppDelegate.swift */,
 				C236EC051A67B394008FD0B4 /* ViewController.swift */,
+				C236EC231A67B3FA008FD0B4 /* Person.swift */,
 				C236EC071A67B394008FD0B4 /* Main.storyboard */,
 				C236EC0A1A67B394008FD0B4 /* Images.xcassets */,
 				C236EC0C1A67B394008FD0B4 /* LaunchScreen.xib */,
@@ -212,6 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C236EC241A67B3FA008FD0B4 /* Person.swift in Sources */,
 				C236EC061A67B394008FD0B4 /* ViewController.swift in Sources */,
 				C236EC041A67B394008FD0B4 /* AppDelegate.swift in Sources */,
 			);
