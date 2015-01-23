@@ -27,6 +27,8 @@ class ViewController: UIViewController {
   
   private var locationManager: CLLocationManager!
   
+    @IBOutlet weak var loginView: FBLoginView!
+    @IBOutlet weak var mapView: MKMapView!
   override func viewDidLoad() {
     super.viewDidLoad()
     

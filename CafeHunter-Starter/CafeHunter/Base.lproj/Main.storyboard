@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.7" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="OI8-Ur-YYC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="OI8-Ur-YYC">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6181.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
         <!--CafeHunter-->
@@ -13,15 +13,83 @@
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="YVk-lI-aba">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="AFX-jl-NTy"/>
+                                </connections>
+                            </mapView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Byw-1n-ple" customClass="FBLoginView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="CCF-jR-HrX"/>
+                                    <constraint firstAttribute="height" constant="50" id="tFA-tH-fbf"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="CCF-jR-HrX"/>
+                                        <exclude reference="tFA-tH-fbf"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="CCF-jR-HrX"/>
+                                        <include reference="tFA-tH-fbf"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="YVk-lI-aba" secondAttribute="bottom" id="2p6-8u-ukv"/>
+                            <constraint firstItem="Byw-1n-ple" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="20" id="3ex-PQ-YMr"/>
+                            <constraint firstAttribute="trailing" secondItem="YVk-lI-aba" secondAttribute="trailing" id="5A4-fV-ANi"/>
+                            <constraint firstAttribute="centerX" secondItem="Byw-1n-ple" secondAttribute="centerX" id="Yvl-hw-OXr"/>
+                            <constraint firstItem="YVk-lI-aba" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="c8f-fV-BJk"/>
+                            <constraint firstItem="YVk-lI-aba" firstAttribute="top" secondItem="Byw-1n-ple" secondAttribute="bottom" constant="8" id="fEP-lq-cNp"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="YVk-lI-aba"/>
+                                <exclude reference="Byw-1n-ple"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="3ex-PQ-YMr"/>
+                                <exclude reference="Yvl-hw-OXr"/>
+                                <exclude reference="5A4-fV-ANi"/>
+                                <exclude reference="c8f-fV-BJk"/>
+                                <exclude reference="fEP-lq-cNp"/>
+                                <exclude reference="2p6-8u-ukv"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="YVk-lI-aba"/>
+                                <include reference="Byw-1n-ple"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="3ex-PQ-YMr"/>
+                                <include reference="Yvl-hw-OXr"/>
+                                <include reference="5A4-fV-ANi"/>
+                                <include reference="c8f-fV-BJk"/>
+                                <include reference="fEP-lq-cNp"/>
+                                <include reference="2p6-8u-ukv"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="CafeHunter" id="owj-Fn-8WE"/>
+                    <connections>
+                        <outlet property="loginView" destination="Byw-1n-ple" id="BTu-ja-c9q"/>
+                        <outlet property="mapView" destination="YVk-lI-aba" id="ibq-bN-NVB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="529" y="677"/>
+            <point key="canvasLocation" x="642" y="676.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mRe-Nb-tQC">

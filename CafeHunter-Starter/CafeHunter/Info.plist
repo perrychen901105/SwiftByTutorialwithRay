@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.razeware.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>com.aodshop.yihai</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -27,7 +27,7 @@
 			<string></string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fbXXXXX</string>
+				<string>fb518064104999862</string>
 			</array>
 		</dict>
 	</array>
