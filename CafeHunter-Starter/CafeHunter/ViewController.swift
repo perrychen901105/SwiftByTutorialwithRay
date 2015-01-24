@@ -27,6 +27,10 @@ class ViewController: UIViewController {
   
   private var locationManager: CLLocationManager!
     private var lastLocation: CLLocation?
+    
+    private var cafes = [Cafe]()
+    
+    
     let searchDistance: CLLocationDistance = 1000
     
     
@@ -107,7 +111,64 @@ extension ViewController: MKMapViewDelegate {
             self.presentViewController(alert, animated: true, completion: nil)
             return
         }
-        //TODO: 
+        // 1
+        // construct the URL that going to use to ask Facebook for the places around the current location that match the search term "cafe"
+        var urlString = "https://graph.facebook.com/v2.0/search/"
+        urlString += "?access_token="
+        urlString += "\(FBSession.activeSession().accessTokenData.accessToken)"
+        urlString += "&type=place"
+        urlString += "&q=cafe"
+        urlString += "&center=\(location.coordinate.latitude)"
+        urlString += "\(location.coordinate.longitude)"
+        urlString += "&distance=\(Int(searchDistance))"
+        
+        
+        // 2
+        let url = NSURL(string: urlString)!
+        
+        println("Request from FB with URL: \(url)")
+        
+        // 3
+        let request = NSURLRequest(URL: url)
+        NSURLConnection.sendAsynchronousRequest(request,
+            queue: NSOperationQueue.mainQueue()) { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
+                
+                // 4
+                if error != nil {
+                    let alert = UIAlertController(title: "Oops!", message: "An error occured", preferredStyle: .Alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
+                    return
+                }
+                
+                // 5
+                var error: NSError?
+                let jsonObject: AnyObject! = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(0), error: &error)
+                
+                // 6
+                if let jsonObject = jsonObject as? [String:AnyObject] {
+                    if error == nil {
+                        println("Data returned from FB:\n\(jsonObject)")
+                        
+                        // 7
+                        if let data = JSONValue.fromObject(jsonObject)?["data"]?.array {
+                            // 8
+                            var cafes: [Cafe] = []
+                            for cafeJSON in data {
+                                if let cafeJSON = cafeJSON.object {
+                                    //TODO: Create Cafe an add to array
+                                }
+                            }
+                            
+                            // 9
+                            self.mapView.removeAnnotations(self.cafes)
+                            self.cafes = cafes
+                            self.mapView.addAnnotations(cafes)
+                        }
+                    }
+                }
+                
+        }
         
     }
     

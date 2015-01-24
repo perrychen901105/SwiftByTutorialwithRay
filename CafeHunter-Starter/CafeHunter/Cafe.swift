@@ -19,13 +19,16 @@ class Cafe: NSObject {
     
     init(fbid: String, name: String, location: CLLocationCoordinate2D, street: String, city: String, zip: String)
     {
+       
         self.fbid = fbid
         self.name = name
         self.location = location
         self.street = street
         self.city = city
         self.zip = zip
+        super.init()
     }
+    
     
 }
 
