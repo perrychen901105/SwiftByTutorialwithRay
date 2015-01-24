@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C26C48831A73890600C2FD6A /* Cafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26C48821A73890600C2FD6A /* Cafe.swift */; };
 		C94AE2EB1975BDB3003425A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AE2EA1975BDB3003425A7 /* AppDelegate.swift */; };
 		C94AE2ED1975BDB3003425A7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AE2EC1975BDB3003425A7 /* ViewController.swift */; };
 		C94AE2F01975BDB3003425A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C94AE2EE1975BDB3003425A7 /* Main.storyboard */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		C245A6C21A7227CA00627D93 /* CafeHunter-ObjCBridging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CafeHunter-ObjCBridging.h"; sourceTree = "<group>"; };
+		C26C48821A73890600C2FD6A /* Cafe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cafe.swift; sourceTree = "<group>"; };
 		C94AE2E51975BDB3003425A7 /* CafeHunter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CafeHunter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C94AE2E91975BDB3003425A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C94AE2EA1975BDB3003425A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 			children = (
 				C94AE2EA1975BDB3003425A7 /* AppDelegate.swift */,
 				C94AE2EC1975BDB3003425A7 /* ViewController.swift */,
+				C26C48821A73890600C2FD6A /* Cafe.swift */,
 				C94AE31819770803003425A7 /* JSON.swift */,
 				C245A6C21A7227CA00627D93 /* CafeHunter-ObjCBridging.h */,
 				C94AE2EE1975BDB3003425A7 /* Main.storyboard */,
@@ -217,6 +220,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C26C48831A73890600C2FD6A /* Cafe.swift in Sources */,
 				C94AE2ED1975BDB3003425A7 /* ViewController.swift in Sources */,
 				C94AE2EB1975BDB3003425A7 /* AppDelegate.swift in Sources */,
 				C94AE31919770803003425A7 /* JSON.swift in Sources */,
@@ -335,6 +339,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: chun long shen (E24HS4WTYK)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -342,6 +347,7 @@
 				INFOPLIST_FILE = CafeHunter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "6000c690-df93-47be-9ee5-3726939f6e3e";
 				SWIFT_OBJC_BRIDGING_HEADER = "CafeHunter/CafeHunter-ObjCBridging.h";
 			};
 			name = Debug;
@@ -351,6 +357,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: chun long shen (E24HS4WTYK)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -358,6 +365,7 @@
 				INFOPLIST_FILE = CafeHunter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "6000c690-df93-47be-9ee5-3726939f6e3e";
 				SWIFT_OBJC_BRIDGING_HEADER = "CafeHunter/CafeHunter-ObjCBridging.h";
 			};
 			name = Release;

@@ -26,7 +26,11 @@ import MapKit
 class ViewController: UIViewController {
   
   private var locationManager: CLLocationManager!
-  
+    private var lastLocation: CLLocation?
+    let searchDistance: CLLocationDistance = 1000
+    
+    
+    
     @IBOutlet weak var loginView: FBLoginView!
     @IBOutlet weak var mapView: MKMapView!
   override func viewDidLoad() {
@@ -43,6 +47,7 @@ class ViewController: UIViewController {
   
   private func checkLocationAuthorizationStatus() {
     if CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse {
+        self.mapView.showsUserLocation = true
     } else {
       self.locationManager.requestWhenInUseAuthorization()
     }
@@ -57,3 +62,54 @@ extension ViewController: CLLocationManagerDelegate {
   }
   
 }
+
+extension ViewController: MKMapViewDelegate {
+    func mapView(mapView: MKMapView!, didFailToLocateUserWithError error: NSError!) {
+        println(error)
+        let alert = UIAlertController(title: "Error",
+            message: "Failed to obtain location!",
+            preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "OK",
+            style: .Default,
+            handler: nil))
+        self.presentViewController(alert,
+            animated: true,
+            completion: nil)
+    }
+    
+    func mapView(mapView: MKMapView!, didUpdateUserLocation userLocation: MKUserLocation!) {
+        // 1
+        // you retrieve the new location from the delegate method's userLocation parameter
+        let newLocation = userLocation.location
+        
+        // 2
+        // calculate the distance from the last location. Note the use of the question mark when obtaining the lastLocation property value. lastLocation is an optional property, meaning its value may be nil. If it is, then this expression returns nil and stops processing. Only if there is a concrete value in lastLocation is distanceFromLocation called on it. For this reason, the local distance variable is also an optional.
+        let distance = self.lastLocation?.distanceFromLocation(newLocation)
+        
+        // 3
+        // you want to update the map if there's no previous distance or if the user has moved by a certain amount. Since distance is an optional, you can do this check very easily in one if-statement. Without optionals, this code would need to be more complex, because you wouldn't be able to tell the diference between no distance value and a distance value of 0.
+        if distance == nil || distance! > searchDistance {
+            self.lastLocation = newLocation
+            self.centerMapOnLocation(newLocation)
+            self.fetchCafesAroundLocation(newLocation)
+        }
+    }
+    
+    private func centerMapOnLocation(location: CLLocation) {
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, searchDistance, searchDistance)
+        self.mapView.setRegion(coordinateRegion, animated: true)
+    }
+    
+    private func fetchCafesAroundLocation(location: CLLocation) {
+        if !FBSession.activeSession().isOpen {
+            let alert = UIAlertController(title: "Error", message: "Login first!", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            return
+        }
+        //TODO: 
+        
+    }
+    
+}
+
