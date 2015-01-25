@@ -146,11 +146,14 @@ extension ViewController: MKMapViewDelegate {
                 let jsonObject: AnyObject! = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(0), error: &error)
                 
                 // 6
+                // if it is successfully downcast and there's no error, then you're successfully retrieved valid data from the API
+                // NSDictionery to [String:AnyObject] NSArray to [AnyObject]
                 if let jsonObject = jsonObject as? [String:AnyObject] {
                     if error == nil {
                         println("Data returned from FB:\n\(jsonObject)")
                         
                         // 7
+                        // use the JSONValue helper defined. use optional chaining to extract the data key out of the JSON. If that key exists and its value can be cast to an array, then the if-statement passes and you have an array of nearby locations to work with
                         if let data = JSONValue.fromObject(jsonObject)?["data"]?.array {
                             // 8
                             var cafes: [Cafe] = []
