@@ -42,6 +42,7 @@ class ViewController: UIViewController {
     
     self.locationManager = CLLocationManager()
     self.locationManager.delegate = self
+    self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: "refresh:")
   }
   
   override func viewDidAppear(animated: Bool) {
@@ -57,6 +58,18 @@ class ViewController: UIViewController {
     }
   }
 
+    func refresh(sender: UIBarButtonItem) {
+        if let location = self.lastLocation {
+            self.centerMapOnLocation(location)
+            self.fetchCafesAroundLocation(location)
+        } else {
+            let alert = UIAlertController(title: "Error", message: "No location yet!", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+            self.presentViewController(alert
+                , animated: true
+                , completion: nil)
+        }
+    }
 }
 
 extension ViewController: CLLocationManagerDelegate {
@@ -67,7 +80,57 @@ extension ViewController: CLLocationManagerDelegate {
   
 }
 
+extension ViewController: CafeViewControllerDelegate {
+    func cafeViewControllerDidFinish(viewController: CafeViewController) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+}
+
 extension ViewController: MKMapViewDelegate {
+    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+        // 1
+        /// pick out the annotations that are Cafe objects
+        if let annotation = annotation as? Cafe {
+            let identifier = "pin"
+            var view: MKPinAnnotationView
+            
+            // 2
+            /// use conditional downcast to ensure that the view is of type MKPinAnnotationView
+            if let dequeuedView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier) as? MKPinAnnotationView {
+                // 3
+                dequeuedView.annotation = annotation
+                view = dequeuedView
+            } else {
+                // 4
+                view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                view.canShowCallout = true
+                view.calloutOffset = CGPoint(x: -5, y: 5)
+                view.rightCalloutAccessoryView = UIButton.buttonWithType(.DetailDisclosure) as UIView
+            }
+            // 5
+            return view
+        }
+        return nil
+    }
+    
+    func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
+        // 1
+        // instantiate a new CafeViewController by asking the storyboard to create one from the Storyboard ID you already set. This could fail and return nil, so you employ the usual conditional optional unwrapping.
+        if let viewController = self.storyboard!.instantiateViewControllerWithIdentifier("CafeView") as? CafeViewController
+        {
+            // 2
+            /// Then check the annotation from the tapped view to see if it's a Cafe object. You know it is, but the compiler doesn't because the type of the annotation property is MKAnnotation.
+            if let cafe = view.annotation as? Cafe {
+                // 3
+                // finally, set up the view controller and present it.
+                viewController.cafe = cafe
+                viewController.delegate = self
+                self.presentViewController(viewController, animated: true, completion: nil)
+                
+            }
+        }
+    }
+    
     func mapView(mapView: MKMapView!, didFailToLocateUserWithError error: NSError!) {
         println(error)
         let alert = UIAlertController(title: "Error",
@@ -153,13 +216,15 @@ extension ViewController: MKMapViewDelegate {
                         println("Data returned from FB:\n\(jsonObject)")
                         
                         // 7
-                        // use the JSONValue helper defined. use optional chaining to extract the data key out of the JSON. If that key exists and its value can be cast to an array, then the if-statement passes and you have an array of nearby locations to work with
+                        // use the JSONValue helper defined. use optional chaining to extract the data key out of the JSON. If that key exists and its value can be cast to an array, then the if-statement passes and you have an array of nearby locations to work with.
                         if let data = JSONValue.fromObject(jsonObject)?["data"]?.array {
                             // 8
                             var cafes: [Cafe] = []
                             for cafeJSON in data {
                                 if let cafeJSON = cafeJSON.object {
-                                    //TODO: Create Cafe an add to array
+                                    if let cafe = Cafe.fromJSON(cafeJSON) {
+                                        cafes.append(cafe)
+                                    }
                                 }
                             }
                             

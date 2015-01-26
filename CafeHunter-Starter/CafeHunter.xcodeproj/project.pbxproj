@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C2535A651A76207E00ECB613 /* CafeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2535A641A76207E00ECB613 /* CafeViewController.swift */; };
 		C26C48831A73890600C2FD6A /* Cafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26C48821A73890600C2FD6A /* Cafe.swift */; };
 		C94AE2EB1975BDB3003425A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AE2EA1975BDB3003425A7 /* AppDelegate.swift */; };
 		C94AE2ED1975BDB3003425A7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AE2EC1975BDB3003425A7 /* ViewController.swift */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		C245A6C21A7227CA00627D93 /* CafeHunter-ObjCBridging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CafeHunter-ObjCBridging.h"; sourceTree = "<group>"; };
+		C2535A641A76207E00ECB613 /* CafeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeViewController.swift; sourceTree = "<group>"; };
 		C26C48821A73890600C2FD6A /* Cafe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cafe.swift; sourceTree = "<group>"; };
 		C94AE2E51975BDB3003425A7 /* CafeHunter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CafeHunter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C94AE2E91975BDB3003425A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 			children = (
 				C94AE2EA1975BDB3003425A7 /* AppDelegate.swift */,
 				C94AE2EC1975BDB3003425A7 /* ViewController.swift */,
+				C2535A641A76207E00ECB613 /* CafeViewController.swift */,
 				C26C48821A73890600C2FD6A /* Cafe.swift */,
 				C94AE31819770803003425A7 /* JSON.swift */,
 				C245A6C21A7227CA00627D93 /* CafeHunter-ObjCBridging.h */,
@@ -220,6 +223,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2535A651A76207E00ECB613 /* CafeViewController.swift in Sources */,
 				C26C48831A73890600C2FD6A /* Cafe.swift in Sources */,
 				C94AE2ED1975BDB3003425A7 /* ViewController.swift in Sources */,
 				C94AE2EB1975BDB3003425A7 /* AppDelegate.swift in Sources */,
