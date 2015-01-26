@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2CBC334F1A766D3D00BA8963 /* BoardCellState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBC334E1A766D3D00BA8963 /* BoardCellState.swift */; };
+		2CBC33511A767AE000BA8963 /* BoardLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBC33501A767AE000BA8963 /* BoardLocation.swift */; };
+		2CBC33531A767C4300BA8963 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBC33521A767C4300BA8963 /* Board.swift */; };
+		2CBC33541A7685E200BA8963 /* BoardCellState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBC334E1A766D3D00BA8963 /* BoardCellState.swift */; };
+		2CBC33551A7685E500BA8963 /* BoardLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBC33501A767AE000BA8963 /* BoardLocation.swift */; };
+		2CBC33561A7685E800BA8963 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBC33521A767C4300BA8963 /* Board.swift */; };
 		727E1BDE194E179100A3E900 /* rrbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 727E1BDC194E179100A3E900 /* rrbutton.png */; };
 		727E1BDF194E179100A3E900 /* rrbutton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 727E1BDD194E179100A3E900 /* rrbutton@2x.png */; };
 		727E1BE4194E186400A3E900 /* ReversiBlackScore.png in Resources */ = {isa = PBXBuildFile; fileRef = 727E1BE0194E186400A3E900 /* ReversiBlackScore.png */; };
@@ -37,6 +43,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2CBC334E1A766D3D00BA8963 /* BoardCellState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BoardCellState.swift; path = SwiftReversi/BoardCellState.swift; sourceTree = SOURCE_ROOT; };
+		2CBC33501A767AE000BA8963 /* BoardLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BoardLocation.swift; path = SwiftReversi/BoardLocation.swift; sourceTree = SOURCE_ROOT; };
+		2CBC33521A767C4300BA8963 /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Board.swift; path = SwiftReversi/Board.swift; sourceTree = SOURCE_ROOT; };
 		727E1BDC194E179100A3E900 /* rrbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rrbutton.png; sourceTree = "<group>"; };
 		727E1BDD194E179100A3E900 /* rrbutton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rrbutton@2x.png"; sourceTree = "<group>"; };
 		727E1BE0194E186400A3E900 /* ReversiBlackScore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ReversiBlackScore.png; sourceTree = "<group>"; };
@@ -158,6 +167,9 @@
 		728E603319437ED0000E9F89 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2CBC334E1A766D3D00BA8963 /* BoardCellState.swift */,
+				2CBC33501A767AE000BA8963 /* BoardLocation.swift */,
+				2CBC33521A767C4300BA8963 /* Board.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -281,7 +293,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				728E600719436315000E9F89 /* ViewController.swift in Sources */,
+				2CBC334F1A766D3D00BA8963 /* BoardCellState.swift in Sources */,
+				2CBC33531A767C4300BA8963 /* Board.swift in Sources */,
 				728E600519436315000E9F89 /* AppDelegate.swift in Sources */,
+				2CBC33511A767AE000BA8963 /* BoardLocation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,7 +304,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CBC33541A7685E200BA8963 /* BoardCellState.swift in Sources */,
 				728E601819436315000E9F89 /* SwiftReversiTests.swift in Sources */,
+				2CBC33561A7685E800BA8963 /* Board.swift in Sources */,
+				2CBC33551A7685E500BA8963 /* BoardLocation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

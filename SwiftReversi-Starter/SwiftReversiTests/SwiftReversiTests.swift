@@ -32,4 +32,17 @@ class SwiftReversiTests: XCTestCase {
         }
     }
     
+    func test_subscript_setWithValidCoords_cellStateIsChanged() {
+        let board = Board()
+        
+        // set the state of one of the cells
+        board[4, 5] = BoardCellState.White
+        
+        // verify 
+        let retrievedState = board[4, 5];
+        XCTAssertEqual(BoardCellState.White, retrievedState, "The cell should have been white!");
+    }
+    
+
+    
 }
