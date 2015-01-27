@@ -30,6 +30,14 @@
 		728E60301943637A000E9F89 /* ReversiBlackPiece@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 728E60281943637A000E9F89 /* ReversiBlackPiece@2x.png */; };
 		728E60311943637A000E9F89 /* ReversiWhitePiece.png in Resources */ = {isa = PBXBuildFile; fileRef = 728E60291943637A000E9F89 /* ReversiWhitePiece.png */; };
 		728E60321943637A000E9F89 /* ReversiWhitePiece@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 728E602A1943637A000E9F89 /* ReversiWhitePiece@2x.png */; };
+		C25B68DF1A772215007DBDB7 /* ReversiBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25B68DE1A772215007DBDB7 /* ReversiBoard.swift */; };
+		C25B68E11A772A2A007DBDB7 /* BoardSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25B68E01A772A2A007DBDB7 /* BoardSquare.swift */; };
+		C25B68E31A772E76007DBDB7 /* ReversiBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25B68E21A772E76007DBDB7 /* ReversiBoardView.swift */; };
+		C25B68E51A773B99007DBDB7 /* BoardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25B68E41A773B99007DBDB7 /* BoardDelegate.swift */; };
+		C25B68E81A7746B9007DBDB7 /* BoardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25B68E41A773B99007DBDB7 /* BoardDelegate.swift */; };
+		C25B68E91A7746BE007DBDB7 /* ReversiBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25B68DE1A772215007DBDB7 /* ReversiBoard.swift */; };
+		C25B68EC1A775DB9007DBDB7 /* MoveDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25B68EB1A775DB9007DBDB7 /* MoveDirection.swift */; };
+		C25B68EE1A775DCA007DBDB7 /* DelegateMulticast.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25B68ED1A775DCA007DBDB7 /* DelegateMulticast.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +75,12 @@
 		728E60281943637A000E9F89 /* ReversiBlackPiece@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ReversiBlackPiece@2x.png"; sourceTree = "<group>"; };
 		728E60291943637A000E9F89 /* ReversiWhitePiece.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ReversiWhitePiece.png; sourceTree = "<group>"; };
 		728E602A1943637A000E9F89 /* ReversiWhitePiece@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ReversiWhitePiece@2x.png"; sourceTree = "<group>"; };
+		C25B68DE1A772215007DBDB7 /* ReversiBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReversiBoard.swift; path = SwiftReversi/ReversiBoard.swift; sourceTree = SOURCE_ROOT; };
+		C25B68E01A772A2A007DBDB7 /* BoardSquare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BoardSquare.swift; path = SwiftReversi/BoardSquare.swift; sourceTree = SOURCE_ROOT; };
+		C25B68E21A772E76007DBDB7 /* ReversiBoardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReversiBoardView.swift; path = SwiftReversi/ReversiBoardView.swift; sourceTree = SOURCE_ROOT; };
+		C25B68E41A773B99007DBDB7 /* BoardDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BoardDelegate.swift; path = SwiftReversi/BoardDelegate.swift; sourceTree = SOURCE_ROOT; };
+		C25B68EB1A775DB9007DBDB7 /* MoveDirection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MoveDirection.swift; path = SwiftReversi/MoveDirection.swift; sourceTree = SOURCE_ROOT; };
+		C25B68ED1A775DCA007DBDB7 /* DelegateMulticast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DelegateMulticast.swift; path = SwiftReversi/DelegateMulticast.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,9 +181,13 @@
 		728E603319437ED0000E9F89 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C25B68ED1A775DCA007DBDB7 /* DelegateMulticast.swift */,
 				2CBC334E1A766D3D00BA8963 /* BoardCellState.swift */,
 				2CBC33501A767AE000BA8963 /* BoardLocation.swift */,
 				2CBC33521A767C4300BA8963 /* Board.swift */,
+				C25B68DE1A772215007DBDB7 /* ReversiBoard.swift */,
+				C25B68E41A773B99007DBDB7 /* BoardDelegate.swift */,
+				C25B68EB1A775DB9007DBDB7 /* MoveDirection.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -177,6 +195,8 @@
 		728E603419437EF4000E9F89 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C25B68E01A772A2A007DBDB7 /* BoardSquare.swift */,
+				C25B68E21A772E76007DBDB7 /* ReversiBoardView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -292,11 +312,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C25B68E51A773B99007DBDB7 /* BoardDelegate.swift in Sources */,
 				728E600719436315000E9F89 /* ViewController.swift in Sources */,
+				C25B68E11A772A2A007DBDB7 /* BoardSquare.swift in Sources */,
 				2CBC334F1A766D3D00BA8963 /* BoardCellState.swift in Sources */,
+				C25B68EE1A775DCA007DBDB7 /* DelegateMulticast.swift in Sources */,
 				2CBC33531A767C4300BA8963 /* Board.swift in Sources */,
+				C25B68E31A772E76007DBDB7 /* ReversiBoardView.swift in Sources */,
+				C25B68DF1A772215007DBDB7 /* ReversiBoard.swift in Sources */,
 				728E600519436315000E9F89 /* AppDelegate.swift in Sources */,
 				2CBC33511A767AE000BA8963 /* BoardLocation.swift in Sources */,
+				C25B68EC1A775DB9007DBDB7 /* MoveDirection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,6 +332,8 @@
 			files = (
 				2CBC33541A7685E200BA8963 /* BoardCellState.swift in Sources */,
 				728E601819436315000E9F89 /* SwiftReversiTests.swift in Sources */,
+				C25B68E81A7746B9007DBDB7 /* BoardDelegate.swift in Sources */,
+				C25B68E91A7746BE007DBDB7 /* ReversiBoard.swift in Sources */,
 				2CBC33561A7685E800BA8963 /* Board.swift in Sources */,
 				2CBC33551A7685E500BA8963 /* BoardLocation.swift in Sources */,
 			);

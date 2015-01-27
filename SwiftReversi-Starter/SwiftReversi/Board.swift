@@ -8,9 +8,13 @@
 
 import Foundation
 
+
 class Board {
     private var cells: [BoardCellState]
     let boardSize = 8
+    
+    // ensures that only delegates implementing the BoardDelegate protocol can be added to the multicast array.
+    private let boardDelegates = DelegateMulticast<BoardDelegate>()
     
     init() {
         cells = Array(count: boardSize * boardSize, repeatedValue: BoardCellState.Empty)
@@ -25,6 +29,7 @@ class Board {
         set{
             assert(isWithinBounds(location), "row or column index out of bounds")
             cells[location.row * boardSize + location.column] = newValue
+            boardDelegates.invokeDelegates{ $0.cellStateChanged(location) }
         }
     }
     
@@ -39,6 +44,25 @@ class Board {
     
     func isWithinBounds(location: BoardLocation) -> Bool {
         return location.row >= 0 && location.row < boardSize && location.column >= 0 && location.column < boardSize
+    }
+    
+    // iterates over every cell, applying the supplied function to each cell in turn
+    func cellVisitor(fn: (BoardLocation) ->()) {
+        for column in 0..<boardSize {
+            for row in 0..<boardSize {
+                let location = BoardLocation(row: row, column: column)
+                fn(location)
+            }
+        }
+    }
+    
+    func clearBoard() {
+        cellVisitor() {self[$0] = .Empty}
+    }
+    
+    // provides a public method that allows classes to add themselves as delegates to the Board.
+    func addDelegate(delegate: BoardDelegate) {
+        boardDelegates.addDelegate(delegate)
     }
     
 }
