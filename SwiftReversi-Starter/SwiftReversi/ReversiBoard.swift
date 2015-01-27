@@ -13,11 +13,30 @@ class ReversiBoard: Board {
     private (set) var nextMove = BoardCellState.White
     
     func isValidMove(location: BoardLocation) -> Bool {
-        return self[location] == BoardCellState.Empty
+        return isValidMove(location, toState: nextMove)
+    }
+    
+    private func isValidMove(location: BoardLocation, toState: BoardCellState) -> Bool {
+        // check the cell is empty
+        if self[location] != BoardCellState.Empty {
+            return false
+        }
+        
+        // test whether the move surrounds any of the opponents pieces
+        for direction in MoveDirection.directions {
+            if moveSurroundsCounters(location, direction: direction, toState: toState) {
+                return true
+            }
+        }
+        
+        return false
     }
     
     func makeMove(location: BoardLocation) {
         self[location] = nextMove
+        for direction in MoveDirection.directions {
+            flipOpponentsCounters(location, direction: direction, toState: nextMove)
+        }
         nextMove = nextMove.invert()
     }
     
@@ -31,5 +50,56 @@ class ReversiBoard: Board {
         blackScore = 2
         whiteScore = 2
     }
+    
+    // determines whether a move to a specific location on the board would surround one or more of the opponent's pieces. Within the while loop, the code checks the required conditions:
+    // 1 The neighboring cell must be occupied by a piece of the opposing color, and the following cell is the opposing color, in which case the while loop continues, or the following cell is the player's color, which means a group is surrounded.
+    func moveSurroundsCounters(location: BoardLocation, direction: MoveDirection, toState: BoardCellState) -> Bool {
+        var index = 1
+        var currentLocation = direction.move(location)
+        
+        while isWithinBounds(currentLocation) {
+            let currentState = self[currentLocation]
+            if index == 1 {
+                // IMMEDIATE NEIGHBORS MUST BE the opponent's color
+                if currentState != toState.invert() {
+                    return false
+                }
+            } else {
+                // if the player's color is reached, the move is valid
+                if currentState == toState {
+                    return true
+                }
+                
+                // if an empty cell is reached give up!
+                if currentState == BoardCellState.Empty {
+                    return false
+                }
+            }
+            index++
+            
+            // move to the next cell
+            currentLocation = direction.move(currentLocation)
+        }
+        return false
+    }
+    
+    private func flipOpponentsCounters(location: BoardLocation, direction: MoveDirection, toState: BoardCellState) {
+        // is this a valid move?
+        if !moveSurroundsCounters(location, direction: direction, toState: toState) {
+            return
+        }
+        
+        let opponentsState = toState.invert()
+        var currentState = BoardCellState.Empty
+        var currentLocation = location
+        
+        // flip counters until the edge of the board is reached or apiece with the current state is reached
+        do {
+        currentLocation = direction.move(currentLocation)
+        currentState = self[currentLocation]
+        self[currentLocation] = toState
+        } while (isWithinBounds(currentLocation) && currentState == opponentsState)
+    }
+    
 }
 

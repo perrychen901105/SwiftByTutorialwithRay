@@ -38,6 +38,8 @@
 		C25B68E91A7746BE007DBDB7 /* ReversiBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25B68DE1A772215007DBDB7 /* ReversiBoard.swift */; };
 		C25B68EC1A775DB9007DBDB7 /* MoveDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25B68EB1A775DB9007DBDB7 /* MoveDirection.swift */; };
 		C25B68EE1A775DCA007DBDB7 /* DelegateMulticast.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25B68ED1A775DCA007DBDB7 /* DelegateMulticast.swift */; };
+		C25B68EF1A777BF7007DBDB7 /* MoveDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25B68EB1A775DB9007DBDB7 /* MoveDirection.swift */; };
+		C25B68F01A777C09007DBDB7 /* DelegateMulticast.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25B68ED1A775DCA007DBDB7 /* DelegateMulticast.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -333,6 +335,8 @@
 				2CBC33541A7685E200BA8963 /* BoardCellState.swift in Sources */,
 				728E601819436315000E9F89 /* SwiftReversiTests.swift in Sources */,
 				C25B68E81A7746B9007DBDB7 /* BoardDelegate.swift in Sources */,
+				C25B68F01A777C09007DBDB7 /* DelegateMulticast.swift in Sources */,
+				C25B68EF1A777BF7007DBDB7 /* MoveDirection.swift in Sources */,
 				C25B68E91A7746BE007DBDB7 /* ReversiBoard.swift in Sources */,
 				2CBC33561A7685E800BA8963 /* Board.swift in Sources */,
 				2CBC33551A7685E500BA8963 /* BoardLocation.swift in Sources */,
