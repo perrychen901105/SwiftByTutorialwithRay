@@ -11,13 +11,23 @@ import Foundation
 class ReversiBoard: Board {
     private (set) var blackScore = 0, whiteScore = 0
     private (set) var nextMove = BoardCellState.White
+    private (set) var gameHasFinished = false
     private let reversiBoardDelegates = DelegateMulticast<ReversiBoardDelegate>()
     
     func addDelegate(delegate: ReversiBoardDelegate) {
         reversiBoardDelegates.addDelegate(delegate)
     }
     
+    override init() {
+        super.init()
+    }
     
+    init(board: ReversiBoard) {
+        super.init(board: board)
+        nextMove = board.nextMove
+        blackScore = board.blackScore
+        whiteScore = board.whiteScore
+    }
     
     func isValidMove(location: BoardLocation) -> Bool {
         return isValidMove(location, toState: nextMove)
@@ -44,10 +54,29 @@ class ReversiBoard: Board {
         for direction in MoveDirection.directions {
             flipOpponentsCounters(location, direction: direction, toState: nextMove)
         }
-        nextMove = nextMove.invert()
+        switchTurns()
+        gameHasFinished = checkIfGameHasFinished()
         whiteScore = countMatches { self[$0] == BoardCellState.White }
         blackScore = countMatches { self[$0] == BoardCellState.Black }
         reversiBoardDelegates.invokeDelegates { $0.boardStateChanged() }
+    }
+    
+    // test whether black or white can make a move.
+    private func checkIfGameHasFinished() -> Bool {
+        return !canPlayerMakeMove(BoardCellState.Black) && !canPlayerMakeMove(BoardCellState.White)
+    }
+    
+    private func canPlayerMakeMove(toState:BoardCellState) -> Bool {
+        return anyCellsMatchCondition { self.isValidMove($0, toState: toState) }
+    }
+    
+    func switchTurns() {
+        var intendedNextMove = nextMove.invert()
+        
+        // only switch turns if the player can make a move
+        if canPlayerMakeMove(intendedNextMove) {
+            nextMove = intendedNextMove
+        }
     }
     
     func setInitialState() {
