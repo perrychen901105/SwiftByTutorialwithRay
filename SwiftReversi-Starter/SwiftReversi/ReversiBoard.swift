@@ -11,6 +11,13 @@ import Foundation
 class ReversiBoard: Board {
     private (set) var blackScore = 0, whiteScore = 0
     private (set) var nextMove = BoardCellState.White
+    private let reversiBoardDelegates = DelegateMulticast<ReversiBoardDelegate>()
+    
+    func addDelegate(delegate: ReversiBoardDelegate) {
+        reversiBoardDelegates.addDelegate(delegate)
+    }
+    
+    
     
     func isValidMove(location: BoardLocation) -> Bool {
         return isValidMove(location, toState: nextMove)
@@ -38,6 +45,9 @@ class ReversiBoard: Board {
             flipOpponentsCounters(location, direction: direction, toState: nextMove)
         }
         nextMove = nextMove.invert()
+        whiteScore = countMatches { self[$0] == BoardCellState.White }
+        blackScore = countMatches { self[$0] == BoardCellState.Black }
+        reversiBoardDelegates.invokeDelegates { $0.boardStateChanged() }
     }
     
     func setInitialState() {

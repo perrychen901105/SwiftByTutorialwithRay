@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, ReversiBoardDelegate {
                             
   @IBOutlet var blackScore : UILabel!
   @IBOutlet var whiteScore : UILabel!
@@ -22,6 +22,11 @@ class ViewController: UIViewController {
         board.setInitialState()
         
         super.init(coder: aDecoder)
+    }
+    
+    func boardStateChanged() {
+        blackScore.text = "\(board.blackScore)"
+        whiteScore.text = "\(board.whiteScore)"
     }
     
   override func viewDidLoad() {
