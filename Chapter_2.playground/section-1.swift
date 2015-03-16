@@ -11,7 +11,12 @@ import UIKit
 //} else {
 //    println("Was nil")
 //}
-
+//
+//if str != nil {
+//    println("not nil")
+//} else {
+//    println("nil")
+//}
 /*
     forced unwarpping
 */
@@ -22,8 +27,8 @@ import UIKit
     Implicit unwrapping
 */
 //var str: String!
-////str = str.lowercaseString
-////println(str)
+//str = str.lowercaseString
+//println(str)
 //
 //if str != nil {
 //    str = str.lowercaseString
